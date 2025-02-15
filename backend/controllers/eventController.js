@@ -39,7 +39,7 @@ exports.getEvents = async (req, res) => {
 
 exports.getAllEvents = async (req, res) => {
   try {
-    const events = await Event.find().populate("createdBy", "username");
+    const events = await Event.find().sort({ createdAt: -1 }).populate("createdBy", "username");
     res.json(events); 
   } catch (err) {
     res.status(500).json({ error: err.message });
