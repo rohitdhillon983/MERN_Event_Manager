@@ -88,7 +88,7 @@ try {
   await user.save();
 
   // Send email
-  const resetUrl = `http://localhost:5173/reset-password/${resetToken}`;
+  const resetUrl = `https://mern-eventhub.netlify.app/reset-password/${resetToken}`;
 
   await mailSender(email, "Reset Password",`your Link for email Verification is ${resetUrl}. Please click this url to reset your Password`);
 
