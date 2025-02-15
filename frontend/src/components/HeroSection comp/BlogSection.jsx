@@ -4,9 +4,11 @@ import { FaAngleRight,FaArrowRight,FaCalendarAlt  } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { FiArrowUpRight } from "react-icons/fi";
 import { Link } from 'react-router-dom';
+import Loading from '../Loader';
 
 const BlogSection = () => {
   const [events, setEvents] = React.useState([]);
+  const [loader, setLoader] = React.useState(true);
 
   const fetchEvents = async () => {
     try {
@@ -16,6 +18,7 @@ const BlogSection = () => {
         ...prevEvents,
       ]);
       setEvents((res.data));
+      setLoader(false);
     } catch (err) {
       console.error("Error fetching events:", err);
     }
@@ -30,6 +33,7 @@ const BlogSection = () => {
     <section className="container mx-auto py-16 overflow-hidden">
       <h2 className="text-[14px] leading-9 tracking-[0.16px] font-bold text-center text-green-700">Explore Our Events</h2>
       <h3 className="text-[32px] leading-9 tracking-[0.16px] font-bold text-center mb-12 max-[769px]:text-[24px]">Explore Our upcoming events</h3>
+      {loader && <Loading />}
       <div className="grid grid-cols-3 max-[769px]:grid-cols-2 max-[426px]:grid-cols-1 gap-8 px-8">
         {events.slice(0, 6).map((event) => (
           <div key={event._id} className="flex flex-col basis-1/3 p-4 shadow-xl rounded-2xl">

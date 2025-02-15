@@ -19,7 +19,7 @@ const WhyChooseRegisterKaro = () => {
               Why EventHub.com
             </p>
             <h2 className="text-3xl md:text-3xl font-bold mb-4">
-               Why Choose EventHub
+               Why Choose <span className="text-green-700">EventHub</span>
             </h2>
             <p className="text-[#0D1216] text-[15px]">
               It is with consistent services and results that build trust with the

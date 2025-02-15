@@ -15,6 +15,10 @@ const ResetPassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+     if(formData.password.length < 6){
+          return toast.error("Password must be at least 6 characters long");
+      }
     try {
       const res = await axios.post(`https://mern-event-manager-4eut.onrender.com/api/auth/reset-password/${urlToken}`, formData);
       navigate("/login"); // Redirect to the Login

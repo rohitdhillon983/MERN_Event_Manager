@@ -9,6 +9,8 @@ import { FcBusinessman } from "react-icons/fc";
 const EventCard = ({ event, onDelete, onUpdate }) => {
   const [attendees, setAttendees] = useState(event.attendees.length);
   const socket = io("https://mern-event-manager-4eut.onrender.com");
+  const [loading, setLoading] = useState(false);
+
 
   useEffect(() => {
     // Listen for real-time attendee updates
@@ -46,16 +48,16 @@ const EventCard = ({ event, onDelete, onUpdate }) => {
       <p className="text-sm text-gray-500 flex items-center gap-1"><FaLocationDot /> {event.location ? event.location : "near India gate, New Delhi 100001"}</p>
       <div className="mt-4 flex space-x-2">       
         <button
-          onClick={() => onUpdate(event)}
+          onClick={() => {onUpdate(event)}}
           className="bg-yellow-500 border-2 border-yellow-500 text-white px-3 py-1 rounded-lg hover:bg-transparent hover:text-yellow-500 font-bold"
         >
           Update
         </button>
         <button
-          onClick={() => onDelete(event._id)}
+          onClick={() => {onDelete(event._id), setLoading(true)}}
           className="hover:bg-red-500 text-red-500 border-2 border-red-500 font-bold px-3 py-1 rounded-lg hover:text-white"
         >
-          Delete
+          {loading ? "Deleting..." : "Delete"}
         </button>
       </div>
       <div className="absolute -bottom-9 -left-2 w-[104%]">

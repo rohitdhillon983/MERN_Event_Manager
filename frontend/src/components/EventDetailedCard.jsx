@@ -25,6 +25,7 @@ const EventDetailedCard = () => {
 
   // Fetch event details
   const fetchEvent = async () => {
+      console.log(id);
       try {
         const response = await axios.get(`https://mern-event-manager-4eut.onrender.com/api/events/getEventById/${id}`);
         const data = response.data;
@@ -33,9 +34,9 @@ const EventDetailedCard = () => {
         console.error("Error fetching event details:", error);
       }
     };
-  // useEffect(() => {
-  //   fetchEvent();
-  // }, [id]);
+  useEffect(() => {
+    fetchEvent();
+  }, [id]);
 
   const token = localStorage.getItem("token");
   // Handle joining an event

@@ -19,6 +19,10 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if(formData.password.length < 6){
+      return toast.error("Password must be at least 6 characters long");
+    }
+
     const signupData = {
       ...formData,
     }
@@ -103,6 +107,7 @@ const Register = () => {
           
           <button
             type="submit"
+            onClick={handleSubmit}
             className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700"
           >
             {Loading ? (

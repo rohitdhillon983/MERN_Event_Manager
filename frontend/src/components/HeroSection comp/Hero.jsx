@@ -5,6 +5,8 @@ import SamsungLogo from '../../assets/New folder/busness/Group (1).png';
 import MondayComLogo from '../../assets/New folder/busness/Group (3).png';
 import SegmentLogo from '../../assets/New folder/busness/Group (4).png';
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useNavigate } from 'react-router-dom';
+
 
 const Hero = () => {
       const logos = [
@@ -16,6 +18,8 @@ const Hero = () => {
         { src: SegmentLogo, alt: 'Segment' },
       ];
       const duplicatedlogo = [...logos, ...logos];
+
+      const navigate = useNavigate();
   return (
     <div className="min-h-screen  flex flex-col justify-center items-center relative">
       <div className="absolute top-0 left-0 w-full min-h-[150vh] main-container"></div>
@@ -31,7 +35,7 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-col justify-center items-center w-full my-10">
-            <button className='button flex justify-center items-center gap-4 '>Get Started <FaArrowRightLong /></button>
+            <button onClick={() => navigate('/events')} className='button flex justify-center items-center gap-4 '>Get Started <FaArrowRightLong /></button>
         </div>
         <div>
         <section className=" flex items-center justify-center  bg-green-100 rounded-full  mt-20 overflow-hidden">

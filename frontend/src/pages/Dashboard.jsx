@@ -86,8 +86,10 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center main-container">
-      <div className="p-4 mt-20 w-11/12">
+    <div className="min-h-screen flex justify-center">
+      <div className="absolute top-0 left-0 w-full min-h-[150vh] main-container"></div>
+
+      <div className="p-4 mt-20 w-11/12 z-30">
         <div className="flex justify-between items-center">
           <p></p>
           <button
@@ -114,11 +116,15 @@ const Dashboard = () => {
         >
           {showForm ? "Hide Form" : "Create Event"} <FaAngleRight />
         </button>
-        {showForm && (
-          <EventForm
-            onSubmit={selectedEvent ? handleUpdateEvent : handleCreateEvent}
-            initialData={selectedEvent || {}}
-          />
+        {showForm && (          
+            <EventForm
+              onSubmit={selectedEvent ? handleUpdateEvent : handleCreateEvent}
+              initialData={selectedEvent || {}}
+              onClick={() => {
+                setSelectedEvent(null);
+                setShowForm(false);
+              }}
+            />
         )}
         <EventList
           events={events}
